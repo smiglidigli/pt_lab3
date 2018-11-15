@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Dodaj kontakt</title>
+    </h:head>
+    <h:body>
+        
+        <h:outputLabel value="Dodawanie kontaktu;"/>
+        <h:form>
+            <h:outputLabel value="imie: "/>
+            <h:inputText id="imie" required="true"
+                         value="#{databaseService.editedContact.imie}"
+                         requiredMessage="Imię jest wymagane."/>
+            <br/><br/>
+            <h:outputLabel value="nazwisko: "/>
+            <h:inputText id="nazwisko" required="true"
+                         value="#{databaseService.editedContact.nazwisko}"
+                         requiredMessage="Nazwisko jest wymagane."/>
+            <br/><br/>
+            <h:outputLabel value="miasto: "/>
+            <h:selectOneMenu
+                value="#{databaseService.editedContact.miasto}" id="miasto">
+                <f:selectItem itemValue="Bengaluru"
+                              itemLabel="Bengaluru"/>
+                <f:selectItem itemValue="Mangaluru"
+                              itemLabel="Mangaluru"/>
+                <f:selectItem itemValue="Mysuru"
+                              itemLabel="Mysuru"/>
+                <f:selectItem itemValue="Kochi"
+                              itemLabel="Kochi"/>
+            </h:selectOneMenu>
+            <br/><br/>
+            <h:outputLabel value="numer telefonu: "/>
+            <h:inputText id="numerTelefonu" required="true"
+                         value="#{databaseService.editedContact.numerTelefonu}"
+                         requiredMessage="Numer telefonu musi składać się z 7-15 znaków.">
+                <f:validateLength maximum="15" minimum="7"/>
+            </h:inputText>
+            <br/><br/>
+            <h:outputLabel value="grupa: "/>
+            <h:selectOneRadio layout="lineDirection"
+                              value="#{databaseService.editedContact.grupa}"
+                              id="grupa">
+                <f:selectItem itemValue="rodzina"
+                              itemLabel="rodzina"/>
+                <f:selectItem itemValue="znajomi"
+                              itemLabel="znajomi"/>
+                <f:selectItem itemValue="inne"
+                              itemLabel="inne"/>
+            </h:selectOneRadio>
+            <br/><br/>
+            <h:commandButton
+                value="Zapisz"
+                action="index"/>
+            <h:commandButton
+                value="Wróć"
+                action="index"
+                immediate="true"/>
+        </h:form>
+    </h:body>
+</html>
+
